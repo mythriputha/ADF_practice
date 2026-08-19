@@ -1,0 +1,15 @@
+{
+	"name": "adf-workshop-mythri",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "bf6186f6-5af5-4457-b2bf-bbe5be45b6b2",
+		"tenantId": "ad305241-de20-404b-b963-2b0eefb13579"
+	}
+}
