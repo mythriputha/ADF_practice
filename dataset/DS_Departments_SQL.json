@@ -1,0 +1,30 @@
+{
+	"name": "DS_Departments_SQL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AzureSQL",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "department_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "department_name",
+				"type": "varchar"
+			},
+			{
+				"name": "manager_name",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Departments"
+		}
+	}
+}
