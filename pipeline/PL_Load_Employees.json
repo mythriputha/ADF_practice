@@ -3,132 +3,6 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy_Employees",
-				"type": "Copy",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "DelimitedTextSource",
-						"storeSettings": {
-							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
-						}
-					},
-					"sink": {
-						"type": "AzureSqlSink",
-						"writeBehavior": "insert",
-						"sqlWriterUseTableLock": false
-					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"mappings": [
-							{
-								"source": {
-									"name": "id",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "id",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "name",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "name",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "department",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "department",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "salary",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "salary",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							}
-						],
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "DS_Employees_CSV",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "DS_Employees_SQL",
-						"type": "DatasetReference"
-					}
-				]
-			},
-			{
-				"name": "Lookup_Employees",
-				"type": "Lookup",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "AzureSqlSource",
-						"queryTimeout": "02:00:00",
-						"partitionOption": "None"
-					},
-					"dataset": {
-						"referenceName": "DS_Departments_SQL",
-						"type": "DatasetReference"
-					}
-				}
-			},
-			{
 				"name": "Get_Metadata_Employees",
 				"type": "GetMetadata",
 				"dependsOn": [],
@@ -150,6 +24,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -158,7 +33,7 @@
 				}
 			},
 			{
-				"name": "If Condition1",
+				"name": "IF_FileExists",
 				"type": "IfCondition",
 				"dependsOn": [
 					{
@@ -174,9 +49,21 @@
 						"value": "@activity('Get_Metadata_Employees').output.exists",
 						"type": "Expression"
 					},
+					"ifFalseActivities": [
+						{
+							"name": "Fail_FileNotFound",
+							"type": "Fail",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"message": "Employee source file does not exist.",
+								"errorCode": "FILE_NOT_FOUND"
+							}
+						}
+					],
 					"ifTrueActivities": [
 						{
-							"name": "Lookup1",
+							"name": "Lookup_Department",
 							"type": "Lookup",
 							"dependsOn": [],
 							"policy": {
@@ -200,11 +87,11 @@
 							}
 						},
 						{
-							"name": "Copy data1",
+							"name": "Copy_Employees_Conditional",
 							"type": "Copy",
 							"dependsOn": [
 								{
-									"activity": "Lookup1",
+									"activity": "Lookup_Department",
 									"dependencyConditions": [
 										"Succeeded"
 									]
