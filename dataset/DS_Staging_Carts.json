@@ -1,0 +1,75 @@
+{
+	"name": "DS_Staging_Carts",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Azure_DB_stg",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "cart_item_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "cart_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "product_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "product_title",
+				"type": "varchar"
+			},
+			{
+				"name": "price",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "quantity",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "total",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "discount_percentage",
+				"type": "decimal",
+				"precision": 8,
+				"scale": 2
+			},
+			{
+				"name": "discounted_total",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "thumbnail",
+				"type": "varchar"
+			},
+			{
+				"name": "last_loaded_at",
+				"type": "datetime2",
+				"scale": 7
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "carts"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

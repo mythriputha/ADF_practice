@@ -1,0 +1,15 @@
+{
+	"name": "adf-project1-mythri123",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "centralus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "7eb89f40-72e5-4e22-907a-0de8c656661f",
+		"tenantId": "ad305241-de20-404b-b963-2b0eefb13579"
+	}
+}
