@@ -1,0 +1,251 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adf-project1-mythri123"
+		},
+		"AzureSqlDatabase1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'AzureSqlDatabase1'"
+		},
+		"LS_ADLS_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_ADLS'"
+		},
+		"LS_ADLS_P1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_ADLS_P1'"
+		},
+		"LS_AzureSQL_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_AzureSQL'"
+		},
+		"LS_AzureSQL_P1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_AzureSQL_P1'"
+		},
+		"LS_Azure_DB_stg_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_Azure_DB_stg'"
+		},
+		"LS_sql_db_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_sql_db'"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "adf-workshop-sql-mythri.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "ADFWorkshopDB"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sqladmin"
+		},
+		"LS_ADLS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://mythriazurelearning.dfs.core.windows.net/"
+		},
+		"LS_ADLS_P1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://stproject1enterprise.dfs.core.windows.net/"
+		},
+		"LS_AzureSQL_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "adf-workshop-sql-mythri.database.windows.net"
+		},
+		"LS_AzureSQL_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "ADFWorkshopDB"
+		},
+		"LS_AzureSQL_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sqladmin"
+		},
+		"LS_AzureSQL_P1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sql-project1-mythri123.database.windows.net"
+		},
+		"LS_AzureSQL_P1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "Project1DB"
+		},
+		"LS_AzureSQL_P1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "projectadmin"
+		},
+		"LS_Azure_DB_stg_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sql-project1-mythri123.database.windows.net"
+		},
+		"LS_Azure_DB_stg_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "Project1DB"
+		},
+		"LS_Azure_DB_stg_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "projectadmin"
+		},
+		"LS_KeyVault_P1_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://kv-project1-mythri123.vault.azure.net/"
+		},
+		"LS_REST_OrdersAPI_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adf-oauth-api-orders-bhhhdsdjemc3c9c7.centralindia-01.azurewebsites.net"
+		},
+		"LS_sql_db_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sql-project1-mythri123.database.windows.net"
+		},
+		"LS_sql_db_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "Project1DB"
+		},
+		"LS_sql_db_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "projectadmin"
+		},
+		"RestService1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adf-oauth-api-orders-bhhhdsdjemc3c9c7.centralindia-01.azurewebsites.net"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adf-project1-mythri123_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureSqlDatabase1_password": {
+						"value": "[parameters('AzureSqlDatabase1_password')]"
+					},
+					"LS_ADLS_accountKey": {
+						"value": "[parameters('LS_ADLS_accountKey')]"
+					},
+					"LS_ADLS_P1_accountKey": {
+						"value": "[parameters('LS_ADLS_P1_accountKey')]"
+					},
+					"LS_AzureSQL_password": {
+						"value": "[parameters('LS_AzureSQL_password')]"
+					},
+					"LS_AzureSQL_P1_password": {
+						"value": "[parameters('LS_AzureSQL_P1_password')]"
+					},
+					"LS_Azure_DB_stg_password": {
+						"value": "[parameters('LS_Azure_DB_stg_password')]"
+					},
+					"LS_sql_db_password": {
+						"value": "[parameters('LS_sql_db_password')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_server": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_server')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_database": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_database')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_userName": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_userName')]"
+					},
+					"LS_ADLS_properties_typeProperties_url": {
+						"value": "[parameters('LS_ADLS_properties_typeProperties_url')]"
+					},
+					"LS_ADLS_P1_properties_typeProperties_url": {
+						"value": "[parameters('LS_ADLS_P1_properties_typeProperties_url')]"
+					},
+					"LS_AzureSQL_properties_typeProperties_server": {
+						"value": "[parameters('LS_AzureSQL_properties_typeProperties_server')]"
+					},
+					"LS_AzureSQL_properties_typeProperties_database": {
+						"value": "[parameters('LS_AzureSQL_properties_typeProperties_database')]"
+					},
+					"LS_AzureSQL_properties_typeProperties_userName": {
+						"value": "[parameters('LS_AzureSQL_properties_typeProperties_userName')]"
+					},
+					"LS_AzureSQL_P1_properties_typeProperties_server": {
+						"value": "[parameters('LS_AzureSQL_P1_properties_typeProperties_server')]"
+					},
+					"LS_AzureSQL_P1_properties_typeProperties_database": {
+						"value": "[parameters('LS_AzureSQL_P1_properties_typeProperties_database')]"
+					},
+					"LS_AzureSQL_P1_properties_typeProperties_userName": {
+						"value": "[parameters('LS_AzureSQL_P1_properties_typeProperties_userName')]"
+					},
+					"LS_Azure_DB_stg_properties_typeProperties_server": {
+						"value": "[parameters('LS_Azure_DB_stg_properties_typeProperties_server')]"
+					},
+					"LS_Azure_DB_stg_properties_typeProperties_database": {
+						"value": "[parameters('LS_Azure_DB_stg_properties_typeProperties_database')]"
+					},
+					"LS_Azure_DB_stg_properties_typeProperties_userName": {
+						"value": "[parameters('LS_Azure_DB_stg_properties_typeProperties_userName')]"
+					},
+					"LS_KeyVault_P1_properties_typeProperties_baseUrl": {
+						"value": "[parameters('LS_KeyVault_P1_properties_typeProperties_baseUrl')]"
+					},
+					"LS_REST_OrdersAPI_properties_typeProperties_url": {
+						"value": "[parameters('LS_REST_OrdersAPI_properties_typeProperties_url')]"
+					},
+					"LS_sql_db_properties_typeProperties_server": {
+						"value": "[parameters('LS_sql_db_properties_typeProperties_server')]"
+					},
+					"LS_sql_db_properties_typeProperties_database": {
+						"value": "[parameters('LS_sql_db_properties_typeProperties_database')]"
+					},
+					"LS_sql_db_properties_typeProperties_userName": {
+						"value": "[parameters('LS_sql_db_properties_typeProperties_userName')]"
+					},
+					"RestService1_properties_typeProperties_url": {
+						"value": "[parameters('RestService1_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "adf-project1-mythri123_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adf-project1-mythri123_ArmTemplate_0')]"
+			]
+		}
+	]
+}

@@ -1,0 +1,90 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-project1-mythri123"
+		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
+		"LS_ADLS_accountKey": {
+			"value": ""
+		},
+		"LS_ADLS_P1_accountKey": {
+			"value": ""
+		},
+		"LS_AzureSQL_password": {
+			"value": ""
+		},
+		"LS_AzureSQL_P1_password": {
+			"value": ""
+		},
+		"LS_Azure_DB_stg_password": {
+			"value": ""
+		},
+		"LS_sql_db_password": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "adf-workshop-sql-mythri.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "ADFWorkshopDB"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "sqladmin"
+		},
+		"LS_ADLS_properties_typeProperties_url": {
+			"value": "https://mythriazurelearning.dfs.core.windows.net/"
+		},
+		"LS_ADLS_P1_properties_typeProperties_url": {
+			"value": "https://stproject1enterprise.dfs.core.windows.net/"
+		},
+		"LS_AzureSQL_properties_typeProperties_server": {
+			"value": "adf-workshop-sql-mythri.database.windows.net"
+		},
+		"LS_AzureSQL_properties_typeProperties_database": {
+			"value": "ADFWorkshopDB"
+		},
+		"LS_AzureSQL_properties_typeProperties_userName": {
+			"value": "sqladmin"
+		},
+		"LS_AzureSQL_P1_properties_typeProperties_server": {
+			"value": "sql-project1-mythri123.database.windows.net"
+		},
+		"LS_AzureSQL_P1_properties_typeProperties_database": {
+			"value": "Project1DB"
+		},
+		"LS_AzureSQL_P1_properties_typeProperties_userName": {
+			"value": "projectadmin"
+		},
+		"LS_Azure_DB_stg_properties_typeProperties_server": {
+			"value": "sql-project1-mythri123.database.windows.net"
+		},
+		"LS_Azure_DB_stg_properties_typeProperties_database": {
+			"value": "Project1DB"
+		},
+		"LS_Azure_DB_stg_properties_typeProperties_userName": {
+			"value": "projectadmin"
+		},
+		"LS_KeyVault_P1_properties_typeProperties_baseUrl": {
+			"value": "https://kv-project1-mythri123.vault.azure.net/"
+		},
+		"LS_REST_OrdersAPI_properties_typeProperties_url": {
+			"value": "https://adf-oauth-api-orders-bhhhdsdjemc3c9c7.centralindia-01.azurewebsites.net"
+		},
+		"LS_sql_db_properties_typeProperties_server": {
+			"value": "sql-project1-mythri123.database.windows.net"
+		},
+		"LS_sql_db_properties_typeProperties_database": {
+			"value": "Project1DB"
+		},
+		"LS_sql_db_properties_typeProperties_userName": {
+			"value": "projectadmin"
+		},
+		"RestService1_properties_typeProperties_url": {
+			"value": "https://adf-oauth-api-orders-bhhhdsdjemc3c9c7.centralindia-01.azurewebsites.net"
+		}
+	}
+}
